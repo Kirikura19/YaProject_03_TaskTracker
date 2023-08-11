@@ -28,6 +28,14 @@ public class Manager {
         HashMap<Integer, SingleTask> tasks = Data.taskGetInstance();
         if(!tasks.containsKey(id))
             throw new NonExistingTask();
+        if(task instanceof MultipleTask)
+            throw new NonExistingTask();
+        if(task instanceof SubTask && !(Data.taskGetInstance().get(id).getCurrentStatus().equals(task.getCurrentStatus()))) {
+            MultipleTask multipleTask = (MultipleTask) Data.taskGetInstance().get(((SubTask) task).getMultipleTaskId());
+            multipleTask.getAllSubTasks().remove(Data.taskGetInstance().get(id));
+            multipleTask.getAllSubTasks().add((SubTask) task);
+            checkMultipleStatus(multipleTask);
+        }
         Data.taskGetInstance().put(id, task);
     }
     public void deleteTask(int id) {
@@ -44,7 +52,7 @@ public class Manager {
             if(!Data.taskGetInstance().containsKey(multipleTaskId) || taskFromCurTask instanceof MultipleTask) {
                 MultipleTask multipleTask = (MultipleTask) taskFromCurTask;
                 multipleTask.getAllSubTasks().add(subTask);
-                checkMultipleStatus(multipleTask, subTask);
+                checkMultipleStatus(multipleTask);
             }
         else
             throw new NonExistingTask();
@@ -54,8 +62,19 @@ public class Manager {
     public void saveTask(SingleTask task) {
         Data.taskGetInstance().put(Data.taskGetInstance().size(), task);
     }
-    public void checkMultipleStatus(MultipleTask multipleTask, SubTask subTask) {
-        if(subTask.getCurrentStatus().equals(TaskStatus.DONE)) {
+    public void checkMultipleStatus(MultipleTask multipleTask) {
+
+        boolean containsDoneSubTask = multipleTask.getAllSubTasks().stream()
+                .anyMatch(subTask -> subTask.getCurrentStatus() == TaskStatus.DONE);
+        boolean containsInProgressSubTask = multipleTask.getAllSubTasks().stream()
+                .anyMatch(subTask -> subTask.getCurrentStatus() == TaskStatus.IN_PROGRESS);
+        boolean containsNewSubTask = multipleTask.getAllSubTasks().stream()
+                .anyMatch(subTask -> subTask.getCurrentStatus() == TaskStatus.NEW);
+
+        if((multipleTask.getAllSubTasks().size() == 0) || !containsDoneSubTask && !containsInProgressSubTask) {
+            multipleTask.setCurrentStatus(TaskStatus.NEW);
+        }
+        else if(!containsNewSubTask && !containsInProgressSubTask) {
             multipleTask.setCurrentStatus(TaskStatus.DONE);
         }
         else {

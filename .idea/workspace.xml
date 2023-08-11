@@ -5,23 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec682046-9d09-4109-87ce-31b6f04e8e1a" name="Changes" comment="Added 3 types of tasks + get all tasks, delete all tasks, get task by id, create task, update task, delete task by id( if you delete multi, also sub deleted)&#10;&#10;In plans: adding console menu">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/data/Data.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/entity/MultipleTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/entity/SingleTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/entity/SubTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/entity/TaskStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/exception/NonExistingTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/service/Manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/service/MultipleToString.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/kirikura/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/service/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/service/Manager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +55,14 @@
       <option name="presentableId" value="Default" />
       <updated>1691743967978</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added 3 types of tasks + get all tasks, delete all tasks, get task by id, create task, update task, delete task by id( if you delete multi, also sub deleted)&#10;&#10;In plans: adding console menu">
+      <created>1691768620158</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691768620158</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -85,5 +79,20 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added 3 types of tasks + get all tasks, delete all tasks, get task by id, create task, update task, delete task by id( if you delete multi, also sub deleted)&#10;&#10;In plans: adding console menu" />
     <option name="LAST_COMMIT_MESSAGE" value="Added 3 types of tasks + get all tasks, delete all tasks, get task by id, create task, update task, delete task by id( if you delete multi, also sub deleted)&#10;&#10;In plans: adding console menu" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/kirikura/service/Manager.java</url>
+          <line>64</line>
+          <properties class="ru.kirikura.service.Manager" method="checkMultipleStatus">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
