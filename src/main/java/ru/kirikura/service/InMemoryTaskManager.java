@@ -3,11 +3,13 @@ import ru.kirikura.data.Data;
 import ru.kirikura.entity.MultipleTask;
 import ru.kirikura.entity.SingleTask;
 import ru.kirikura.entity.SubTask;
-import ru.kirikura.entity.TaskStatus;
 import ru.kirikura.exception.NonExistingTask;
+import ru.kirikura.interfaces.Manager;
+
 import java.util.HashMap;
 
-public class Manager {
+public class InMemoryTaskManager implements Manager {
+    @Override
     public void getAllTasks() {
         for (HashMap.Entry<Integer, SingleTask> entry : Data.taskGetInstance().entrySet()) {
             if(!(entry.getValue() instanceof SubTask)) {
@@ -15,15 +17,18 @@ public class Manager {
             }
         }
     }
+    @Override
     public void deleteAllTasks() {
         Data.taskGetInstance().clear();
     }
+    @Override
     public SingleTask getTask(int id) throws NonExistingTask {
         HashMap<Integer, SingleTask> tasks = Data.taskGetInstance();
         if(!tasks.containsKey(id))
             throw new NonExistingTask();
         return Data.taskGetInstance().get(id);
     }
+    @Override
     public void updateTask(int id, SingleTask task) throws NonExistingTask {
         HashMap<Integer, SingleTask> tasks = Data.taskGetInstance();
         if(!tasks.containsKey(id))
@@ -34,10 +39,11 @@ public class Manager {
             MultipleTask multipleTask = (MultipleTask) Data.taskGetInstance().get(((SubTask) task).getMultipleTaskId());
             multipleTask.getAllSubTasks().remove(Data.taskGetInstance().get(id));
             multipleTask.getAllSubTasks().add((SubTask) task);
-            checkMultipleStatus(multipleTask);
+            new MultipleUtil().checkMultipleStatus(multipleTask);
         }
         Data.taskGetInstance().put(id, task);
     }
+    @Override
     public void deleteTask(int id) {
         if(Data.taskGetInstance().get(id) instanceof MultipleTask) {
             for (SubTask st : ((MultipleTask) Data.taskGetInstance().get(id)).getAllSubTasks())
@@ -45,6 +51,7 @@ public class Manager {
         }
         Data.taskGetInstance().remove(id);
     }
+    @Override
     public void createTask(SingleTask task) throws NonExistingTask {
         if(task instanceof SubTask subTask) {
             int multipleTaskId = (subTask).getMultipleTaskId();
@@ -52,33 +59,14 @@ public class Manager {
             if(!Data.taskGetInstance().containsKey(multipleTaskId) || taskFromCurTask instanceof MultipleTask) {
                 MultipleTask multipleTask = (MultipleTask) taskFromCurTask;
                 multipleTask.getAllSubTasks().add(subTask);
-                checkMultipleStatus(multipleTask);
+                new MultipleUtil().checkMultipleStatus(multipleTask);
             }
-        else
-            throw new NonExistingTask();
+        else throw new NonExistingTask();
         }
         saveTask(task);
     }
+    @Override
     public void saveTask(SingleTask task) {
         Data.taskGetInstance().put(Data.taskGetInstance().size(), task);
-    }
-    public void checkMultipleStatus(MultipleTask multipleTask) {
-
-        boolean containsDoneSubTask = multipleTask.getAllSubTasks().stream()
-                .anyMatch(subTask -> subTask.getCurrentStatus() == TaskStatus.DONE);
-        boolean containsInProgressSubTask = multipleTask.getAllSubTasks().stream()
-                .anyMatch(subTask -> subTask.getCurrentStatus() == TaskStatus.IN_PROGRESS);
-        boolean containsNewSubTask = multipleTask.getAllSubTasks().stream()
-                .anyMatch(subTask -> subTask.getCurrentStatus() == TaskStatus.NEW);
-
-        if((multipleTask.getAllSubTasks().size() == 0) || !containsDoneSubTask && !containsInProgressSubTask) {
-            multipleTask.setCurrentStatus(TaskStatus.NEW);
-        }
-        else if(!containsNewSubTask && !containsInProgressSubTask) {
-            multipleTask.setCurrentStatus(TaskStatus.DONE);
-        }
-        else {
-            multipleTask.setCurrentStatus(TaskStatus.IN_PROGRESS);
-        }
     }
 }

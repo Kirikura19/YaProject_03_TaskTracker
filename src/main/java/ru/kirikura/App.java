@@ -4,7 +4,7 @@ import ru.kirikura.entity.MultipleTask;
 import ru.kirikura.entity.SubTask;
 import ru.kirikura.entity.TaskStatus;
 import ru.kirikura.exception.NonExistingTask;
-import ru.kirikura.service.Manager;
+import ru.kirikura.service.InMemoryTaskManager;
 
 /**
  * Hello world!
@@ -13,7 +13,7 @@ import ru.kirikura.service.Manager;
 public class App 
 {
     public static void main( String[] args ) throws NonExistingTask {
-        Manager manager = new Manager();
+        InMemoryTaskManager manager = new InMemoryTaskManager();
         manager.createTask(new MultipleTask("HW", "I need to do my HW"));
         manager.createTask(new MultipleTask("HW 2", "I need to do my HW"));
         manager.createTask(new SubTask("HW Step 1", "I need to do my HW, Step 1", TaskStatus.NEW, 0));

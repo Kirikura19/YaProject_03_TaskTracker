@@ -1,5 +1,5 @@
 package ru.kirikura.entity;
-import ru.kirikura.service.MultipleToString;
+import ru.kirikura.service.MultipleUtil;
 import java.util.ArrayList;
 
 public class MultipleTask extends SingleTask {
@@ -13,6 +13,6 @@ public class MultipleTask extends SingleTask {
     }
     @Override
     public String toString() {
-        return new MultipleToString().toOutout(name, description, currentStatus, subTasks);
+        return new MultipleUtil().toOutout(name, description, currentStatus, subTasks);
     }
 }
