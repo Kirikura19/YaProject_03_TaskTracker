@@ -4,11 +4,13 @@ import ru.kirikura.entity.MultipleTask;
 import ru.kirikura.entity.SingleTask;
 import ru.kirikura.entity.SubTask;
 import ru.kirikura.exception.NonExistingTask;
-import ru.kirikura.interfaces.Manager;
+import ru.kirikura.interfaces.HistoryManager;
+import ru.kirikura.interfaces.TaskManager;
 
 import java.util.HashMap;
 
-public class InMemoryTaskManager implements Manager {
+public class InMemoryTaskManager implements TaskManager {
+    HistoryManager history = new HistoryService();
     @Override
     public void getAllTasks() {
         for (HashMap.Entry<Integer, SingleTask> entry : Data.taskGetInstance().entrySet()) {
@@ -26,6 +28,7 @@ public class InMemoryTaskManager implements Manager {
         HashMap<Integer, SingleTask> tasks = Data.taskGetInstance();
         if(!tasks.containsKey(id))
             throw new NonExistingTask();
+        history.addHistory(id);
         return Data.taskGetInstance().get(id);
     }
     @Override
@@ -39,7 +42,7 @@ public class InMemoryTaskManager implements Manager {
             MultipleTask multipleTask = (MultipleTask) Data.taskGetInstance().get(((SubTask) task).getMultipleTaskId());
             multipleTask.getAllSubTasks().remove(Data.taskGetInstance().get(id));
             multipleTask.getAllSubTasks().add((SubTask) task);
-            new MultipleUtil().checkMultipleStatus(multipleTask);
+            new MultipleService().checkMultipleStatus(multipleTask);
         }
         Data.taskGetInstance().put(id, task);
     }
@@ -59,7 +62,7 @@ public class InMemoryTaskManager implements Manager {
             if(!Data.taskGetInstance().containsKey(multipleTaskId) || taskFromCurTask instanceof MultipleTask) {
                 MultipleTask multipleTask = (MultipleTask) taskFromCurTask;
                 multipleTask.getAllSubTasks().add(subTask);
-                new MultipleUtil().checkMultipleStatus(multipleTask);
+                new MultipleService().checkMultipleStatus(multipleTask);
             }
         else throw new NonExistingTask();
         }

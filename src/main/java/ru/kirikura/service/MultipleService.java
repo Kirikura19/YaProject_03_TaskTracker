@@ -8,7 +8,7 @@ import ru.kirikura.entity.TaskStatus;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class MultipleUtil {
+public class MultipleService {
     public String toOutout(String name, String description, TaskStatus currentStatus, ArrayList<SubTask> subTasks) {
         String border = "═".repeat(20);
         String temp = "\n" +

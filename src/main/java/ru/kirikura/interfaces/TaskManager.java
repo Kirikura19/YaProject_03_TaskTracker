@@ -3,7 +3,7 @@ package ru.kirikura.interfaces;
 import ru.kirikura.entity.SingleTask;
 import ru.kirikura.exception.NonExistingTask;
 
-public interface Manager {
+public interface TaskManager {
     void getAllTasks();
     void deleteAllTasks() throws NonExistingTask;
     SingleTask getTask(int id) throws NonExistingTask;
