@@ -8,6 +8,10 @@ public class MultipleTask extends SingleTask {
         super(name, description, TaskStatus.NEW);
         subTasks = new ArrayList<>();
     }
+    public MultipleTask(String name, String description, TaskStatus status) {
+        super(name, description, status);
+        subTasks = new ArrayList<>();
+    }
     public ArrayList<SubTask> getAllSubTasks() {
         return subTasks;
     }

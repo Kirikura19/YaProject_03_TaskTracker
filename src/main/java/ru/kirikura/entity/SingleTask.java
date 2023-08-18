@@ -25,4 +25,12 @@ public class SingleTask {
                 "║ Status: " + currentStatus + "\n" +
                 "╚" + border + "╝";
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

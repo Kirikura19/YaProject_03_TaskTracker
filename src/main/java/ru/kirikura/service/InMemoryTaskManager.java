@@ -10,7 +10,7 @@ import ru.kirikura.interfaces.TaskManager;
 import java.util.HashMap;
 
 public class InMemoryTaskManager implements TaskManager {
-    HistoryManager history = new HistoryService();
+    HistoryManager history = new InMemoryHistoryService();
     @Override
     public void getAllTasks() {
         for (HashMap.Entry<Integer, SingleTask> entry : Data.taskGetInstance().entrySet()) {

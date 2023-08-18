@@ -5,7 +5,7 @@ import ru.kirikura.entity.SingleTask;
 import ru.kirikura.entity.SubTask;
 import ru.kirikura.entity.TaskStatus;
 import ru.kirikura.exception.NonExistingTask;
-import ru.kirikura.service.HistoryService;
+import ru.kirikura.service.InMemoryHistoryService;
 import ru.kirikura.service.InMemoryTaskManager;
 import ru.kirikura.util.Managers;
 
@@ -17,7 +17,7 @@ public class App
 {
     public static void main( String[] args ) throws NonExistingTask {
         InMemoryTaskManager manager = (InMemoryTaskManager) Managers.getDefaultTaskManager();
-        HistoryService history = (HistoryService) Managers.getDefaultHistoryManager();
+        InMemoryHistoryService history = (InMemoryHistoryService) Managers.getDefaultHistoryManager();
 
         manager.createTask(new MultipleTask("HW", "I need to do my HW"));
         manager.createTask(new MultipleTask("HW 2", "I need to do my HW"));
@@ -35,6 +35,8 @@ public class App
         manager.getTask(1);
         manager.getTask(2);
         manager.getTask(3);
+        manager.getTask(0);
+        manager.getTask(2);
         System.out.println("----------------------------------------------------------------");
         history.getHistory();
 
