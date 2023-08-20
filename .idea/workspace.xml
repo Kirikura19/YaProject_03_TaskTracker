@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec682046-9d09-4109-87ce-31b6f04e8e1a" name="Changes" comment="Change service logic">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/entity/TaskType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/interfaces/FileTaskManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/service/FiledBackedTaskManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/service/InMemoryHistoryService.java" afterDir="false" />
+    <list default="true" id="ec682046-9d09-4109-87ce-31b6f04e8e1a" name="Changes" comment="Added FileManager (Load and Save progress to CSV file)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/data/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/entity/MultipleTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/entity/MultipleTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/entity/SingleTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/entity/SingleTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/interfaces/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/interfaces/HistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/service/HistoryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/service/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/service/InMemoryTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kirikura/util/Managers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kirikura/util/Managers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +75,7 @@
       <workItem from="1691822190770" duration="9104000" />
       <workItem from="1692088768249" duration="800000" />
       <workItem from="1692293953238" duration="4913000" />
-      <workItem from="1692351195285" duration="8506000" />
+      <workItem from="1692351195285" duration="9371000" />
     </task>
     <task id="LOCAL-00001" summary="Added 3 types of tasks + get all tasks, delete all tasks, get task by id, create task, update task, delete task by id( if you delete multi, also sub deleted)&#10;&#10;In plans: adding console menu">
       <created>1691768620158</created>
@@ -110,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691832476740</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added FileManager (Load and Save progress to CSV file)">
+      <created>1692363454699</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692363454699</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +139,7 @@
     <MESSAGE value="Added Override annotations" />
     <MESSAGE value="Added history and fix bug" />
     <MESSAGE value="Change service logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change service logic" />
+    <MESSAGE value="Added FileManager (Load and Save progress to CSV file)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added FileManager (Load and Save progress to CSV file)" />
   </component>
 </project>
